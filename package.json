@@ -9,6 +9,10 @@
 		"lint": "eslint .",
 		"preview": "vite preview"
 	},
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=9.0.0"
+	},
 	"dependencies": {
 		"@tanstack/react-query": "^5.99.2",
 		"framer-motion": "^12.38.0",
