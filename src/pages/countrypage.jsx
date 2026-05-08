@@ -1,4 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "../components/layout";
 
 export function CountryPage({ countries, theme, onToggle }) {
@@ -15,6 +16,13 @@ export function CountryPage({ countries, theme, onToggle }) {
 	if (!country)
 		return (
 			<Layout theme={theme} onToggle={onToggle}>
+				<Helmet>
+					<title>País no encontrado — World Stats Dashboard</title>
+					<meta
+						name="description"
+						content="País no encontrado en World Dashboard"
+					/>
+				</Helmet>
 				<p className="text-zinc-400">País no encontrado.</p>
 			</Layout>
 		);
@@ -26,6 +34,21 @@ export function CountryPage({ countries, theme, onToggle }) {
 
 	return (
 		<Layout theme={theme} onToggle={onToggle}>
+			<Helmet>
+				<title>{country.name.common} — World Stats Dashboard</title>
+				<meta
+					name="description"
+					content={`Learn about ${country.name.common} - population, area, languages, and more on World Stats Dashboard`}
+				/>
+				<meta
+					property="og:title"
+					content={`${country.name.common} — World Stats Dashboard`}
+				/>
+				<meta
+					property="og:description"
+					content={`Discover detailed statistics about ${country.name.common}`}
+				/>
+			</Helmet>
 			<button
 				onClick={() => navigate("/")}
 				className="mb-6 flex items-center gap-2 text-sm text-zinc-500
