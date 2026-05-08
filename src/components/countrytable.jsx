@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCountryFilter } from "../hooks/useCountryFilter";
-import { Toolbar } from "./Toolbar";
+import { Toolbar } from "./toolbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Panel from "./ui/panel";
 import Pagination from "./ui/pagination";

@@ -10,7 +10,7 @@ import {
 	buildCountryMap,
 	buildColorScale,
 	resolveCountryKey,
-} from "../utils/mapUtils";
+} from "../utils/maputils";
 import { useNavigate } from "react-router-dom";
 import Panel from "./ui/panel";
 import Button from "./ui/button";
