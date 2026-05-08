@@ -117,6 +117,7 @@ La característica más "WOW" del dashboard:
    - Perfecto para grabar videos para LinkedIn 📹
 
 **Casos de uso:**
+
 - Comparar España vs Italia (tamaño similar, metros vs habitantes)
 - Comparar China vs India (ambas populosas, áreas diferentes)
 - Comparar Monaco vs Vaticano (microestados)

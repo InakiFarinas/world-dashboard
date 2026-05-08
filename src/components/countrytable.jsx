@@ -266,11 +266,10 @@ export function CountryTable({ countries, onCompare }) {
 									initial="hidden"
 									animate="visible"
 									exit="exit"
-									onClick={() => navigate(`/country/${c.cca3}`)}
 									style={{
 										display: "grid",
 
-										gridTemplateColumns: "2fr 1fr 1fr 1fr",
+										gridTemplateColumns: "40px 2fr 1fr 1fr 1fr",
 
 										gap: SPACING.MD,
 
@@ -280,11 +279,25 @@ export function CountryTable({ countries, onCompare }) {
 
 										borderBottom: "0.5px solid var(--border)",
 
-										cursor: "pointer",
-
 										transition: "background 0.1s",
 									}}
 								>
+									{/* Checkbox */}
+									<input
+										type="checkbox"
+										checked={isSelected(c.cca3)}
+										onChange={(e) => {
+											e.stopPropagation();
+											toggleCountry(c.cca3);
+										}}
+										style={{
+											width: 18,
+											height: 18,
+											cursor: "pointer",
+										}}
+									/>
+
+									{/* País */}
 									<div
 										style={{
 											display: "flex",
@@ -292,18 +305,11 @@ export function CountryTable({ countries, onCompare }) {
 											alignItems: "center",
 
 											gap: SPACING.MD + 2,
+
+											cursor: "pointer",
 										}}
 										onClick={() => navigate(`/country/${c.cca3}`)}
 									>
-										`n{" "}
-										<input
-											type="checkbox"
-											checked={isSelected(c.cca3)}
-											onChange={(e) => {
-												e.stopPropagation();
-												toggleCountry(c.cca3);
-											}}
-										/>
 										<img
 											src={c.flags.svg}
 											alt={c.name.common}
