@@ -1,48 +1,39 @@
 import { useNavigate } from "react-router-dom";
-
 import { useCountryFilter } from "../hooks/useCountryFilter";
-
 import { useCountryComparison } from "../hooks/useCountryComparison";
-
 import { ComparisonView } from "./comparisonview";
-
 import { Toolbar } from "./toolbar";
-
 import { motion, AnimatePresence } from "framer-motion";
-
 import Panel from "./ui/panel";
-
 import Pagination from "./ui/pagination";
-
-import { SPACING, FONT_SIZE, BORDER_RADIUS } from "../utils/styleConstants";
+import { PrimaryButton, SecondaryButton } from "./ui/buttongroup";
+import {
+	SPACING,
+	FONT_SIZE,
+	BORDER_RADIUS,
+	TEXT_STYLES,
+} from "../utils/styleConstants";
 
 const rowVariants = {
 	hidden: { opacity: 0, x: -8 },
-
 	visible: (i) => ({
 		opacity: 1,
-
 		x: 0,
-
 		transition: { delay: i * 0.04, duration: 0.2, ease: "easeOut" },
 	}),
-
 	exit: { opacity: 0, x: 8 },
 };
 
 const REGION_COLORS = {
 	Africa: { bg: "#FAEEDA", color: "#633806" },
-
 	Americas: { bg: "#E6F1FB", color: "#0C447C" },
-
 	Asia: { bg: "#FCEBEB", color: "#791F1F" },
-
 	Europe: { bg: "#EEEDFE", color: "#3C3489" },
-
 	Oceania: { bg: "#E1F5EE", color: "#085041" },
 };
 
-const COL = "grid-template-columns: 40px 2fr 1fr 1fr 1fr";
+const GRID_COLUMNS = "40px 2fr 1fr 1fr 1fr";
+const TABLE_HEADERS = ["País", "Región", "Población", "Área km²"];
 
 export function CountryTable({ countries, onCompare }) {
 	const navigate = useNavigate();
@@ -96,7 +87,6 @@ export function CountryTable({ countries, onCompare }) {
 
 			<Panel style={{ overflow: "hidden" }}>
 				{/* Botón de comparación */}
-
 				{canCompare && (
 					<motion.div
 						initial={{ opacity: 0, height: 0 }}
@@ -104,24 +94,17 @@ export function CountryTable({ countries, onCompare }) {
 						exit={{ opacity: 0, height: 0 }}
 						style={{
 							padding: `${SPACING.MD}px ${SPACING.MD + 6}px`,
-
 							backgroundColor: "var(--bg-2)",
-
 							borderBottom: "1px solid var(--border)",
-
 							display: "flex",
-
 							gap: SPACING.MD,
-
 							alignItems: "center",
 						}}
 					>
 						<p
 							style={{
-								fontSize: FONT_SIZE.SM,
-
+								fontSize: FONT_SIZE.LABEL,
 								color: "var(--text-2)",
-
 								flex: 1,
 							}}
 						>
@@ -129,103 +112,37 @@ export function CountryTable({ countries, onCompare }) {
 							{selectedCountries.length > 1 ? "es" : ""} seleccionado
 							{selectedCountries.length > 1 ? "s" : ""}
 						</p>
-
-						<button
+						<PrimaryButton
 							onClick={() => {
 								onCompare(selectedCountries);
-
 								clearSelection();
-							}}
-							style={{
-								padding: "8px 16px",
-
-								backgroundColor: "#3B82F6",
-
-								color: "white",
-
-								border: "none",
-
-								borderRadius: BORDER_RADIUS.SM,
-
-								cursor: "pointer",
-
-								fontSize: FONT_SIZE.SM,
-
-								fontWeight: 600,
-
-								transition: "background 0.2s",
-							}}
-							onMouseOver={(e) => {
-								e.target.style.backgroundColor = "#2563EB";
-							}}
-							onMouseOut={(e) => {
-								e.target.style.backgroundColor = "#3B82F6";
 							}}
 						>
 							📊 Comparar
-						</button>
-
-						<button
-							onClick={clearSelection}
-							style={{
-								padding: "8px 12px",
-
-								backgroundColor: "transparent",
-
-								color: "var(--text-2)",
-
-								border: "1px solid var(--border)",
-
-								borderRadius: BORDER_RADIUS.SM,
-
-								cursor: "pointer",
-
-								fontSize: FONT_SIZE.SM,
-
-								transition: "all 0.2s",
-							}}
-							onMouseOver={(e) => {
-								e.target.style.backgroundColor = "var(--bg-3)";
-							}}
-							onMouseOut={(e) => {
-								e.target.style.backgroundColor = "transparent";
-							}}
-						>
-							✕
-						</button>
+						</PrimaryButton>
+						<SecondaryButton onClick={clearSelection}>✕</SecondaryButton>
 					</motion.div>
 				)}
 
 				{/* Header */}
-
 				<div
 					style={{
 						display: "grid",
-
-						gridTemplateColumns: "40px 2fr 1fr 1fr 1fr",
-
+						gridTemplateColumns: GRID_COLUMNS,
 						gap: SPACING.MD,
-
 						padding: `${SPACING.SM}px ${SPACING.MD + 6}px`,
-
 						borderBottom: "0.5px solid var(--border)",
 					}}
 				>
 					<div />
-
-					{["País", "Región", "Población", "Área km²"].map((h) => (
+					{TABLE_HEADERS.map((h) => (
 						<span
 							key={h}
 							style={{
-								fontSize: FONT_SIZE.SMALLEST,
-
+								...TEXT_STYLES.tertiary,
 								fontWeight: 500,
-
 								textTransform: "uppercase",
-
 								letterSpacing: "0.06em",
-
-								color: "var(--text-3)",
 							}}
 						>
 							{h}
@@ -242,9 +159,7 @@ export function CountryTable({ countries, onCompare }) {
 
 							textAlign: "center",
 
-							fontSize: 13,
-
-							color: "var(--text-3)",
+							...TEXT_STYLES.tertiary,
 						}}
 					>
 						Sin resultados para {query}
@@ -269,7 +184,7 @@ export function CountryTable({ countries, onCompare }) {
 									style={{
 										display: "grid",
 
-										gridTemplateColumns: "40px 2fr 1fr 1fr 1fr",
+										gridTemplateColumns: GRID_COLUMNS,
 
 										gap: SPACING.MD,
 
@@ -354,7 +269,7 @@ export function CountryTable({ countries, onCompare }) {
 
 									<span
 										style={{
-											fontSize: FONT_SIZE.SMALLEST,
+											fontSize: FONT_SIZE.LABEL,
 
 											fontWeight: 500,
 
@@ -372,11 +287,21 @@ export function CountryTable({ countries, onCompare }) {
 										{c.region}
 									</span>
 
-									<span style={{ fontSize: 12, color: "var(--text-2)" }}>
+									<span
+										style={{
+											fontSize: FONT_SIZE.LABEL,
+											color: "var(--text-2)",
+										}}
+									>
 										{(c.population || 0).toLocaleString()}
 									</span>
 
-									<span style={{ fontSize: 12, color: "var(--text-2)" }}>
+									<span
+										style={{
+											fontSize: FONT_SIZE.LABEL,
+											color: "var(--text-2)",
+										}}
+									>
 										{c.area ? c.area.toLocaleString() : "—"}
 									</span>
 								</motion.div>

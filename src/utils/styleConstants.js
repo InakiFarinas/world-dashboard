@@ -64,3 +64,50 @@ export const SPACING = {
 	LG: 12,
 	XL: 16,
 };
+
+// Button Styles - Reusable
+export const BUTTON_PRIMARY = {
+	padding: "8px 16px",
+	backgroundColor: "#3B82F6",
+	color: "white",
+	border: "none",
+	borderRadius: BORDER_RADIUS.BASE,
+	cursor: "pointer",
+	fontSize: FONT_SIZE.LABEL,
+	fontWeight: 600,
+	transition: "background 0.2s",
+	hoverBg: "#2563EB",
+};
+
+export const BUTTON_SECONDARY = {
+	padding: "8px 12px",
+	backgroundColor: "transparent",
+	color: "var(--text-2)",
+	border: "1px solid var(--border)",
+	borderRadius: BORDER_RADIUS.BASE,
+	cursor: "pointer",
+	fontSize: FONT_SIZE.LABEL,
+	transition: "all 0.2s",
+	hoverBg: "var(--bg-3)",
+};
+
+// Common Text Styles
+export const TEXT_STYLES = {
+	headingLarge: {
+		fontSize: FONT_SIZE.LABEL,
+		fontWeight: 600,
+		color: "var(--text-1)",
+	},
+	headingMedium: {
+		fontSize: FONT_SIZE.LABEL,
+		fontWeight: 600,
+	},
+	secondary: {
+		fontSize: FONT_SIZE.LABEL,
+		color: "var(--text-2)",
+	},
+	tertiary: {
+		fontSize: FONT_SIZE.SMALLEST,
+		color: "var(--text-3)",
+	},
+};
