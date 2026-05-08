@@ -12,7 +12,32 @@ import { getPopByRegion } from "../../utils/chartutils";
 import Panel from "../ui/panel";
 import { formatCompact } from "../../utils/format";
 import { FONT_SIZE } from "../../utils/styleConstants";
-import { getThemeVars, getChartTooltipStyle } from "../../utils/themeUtils";
+import { getThemeVars } from "../../utils/themeUtils";
+
+function RegionTooltip({ active, payload }) {
+	if (!active || !payload?.length) return null;
+
+	const entry = payload[0].payload;
+
+	return (
+		<div
+			style={{
+				background: "var(--surface)",
+				border: "1px solid var(--border)",
+				borderRadius: 10,
+				padding: 10,
+				boxShadow: "0 8px 24px rgba(0,0,0,.12)",
+			}}
+		>
+			<div style={{ fontSize: 12, fontWeight: 600, marginBottom: 4, color: "var(--text-1)" }}>
+				{entry.region}
+			</div>
+			<div style={{ fontSize: 12, color: "var(--text-2)" }}>
+				{entry.population.toLocaleString()} habitantes
+			</div>
+		</div>
+	);
+}
 
 const COLORS = {
 	Asia: "#7F77DD",
@@ -29,7 +54,6 @@ export function RegionBarChart({ countries }) {
 	);
 
 	const themeVars = getThemeVars();
-	const tooltipStyle = getChartTooltipStyle(themeVars);
 
 	return (
 		<Panel
@@ -57,10 +81,7 @@ export function RegionBarChart({ countries }) {
 						tickLine={false}
 						width={42}
 					/>
-					<Tooltip
-						formatter={(v) => [formatCompact(v), "Población"]}
-						contentStyle={tooltipStyle}
-					/>
+					<Tooltip content={<RegionTooltip />} />
 					<Bar dataKey="population" radius={[4, 4, 0, 0]}>
 						{data.map((entry) => (
 							<Cell
