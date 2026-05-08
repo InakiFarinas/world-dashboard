@@ -7,7 +7,11 @@ Una aplicación web interactiva que proporciona información global sobre paíse
 - **📊 Dashboard Interactivo**: Vista general con estadísticas clave del mundo
 - **🗺️ Mapa Mundial**: Visualización interactiva de países con información geográfica
 - **📋 Tabla de Países**: Listado completo de países con filtros y búsqueda avanzada
-- **📈 Gráficos Analíticos**:
+- **� Comparador de Países**: Selecciona dos países y mira sus métricas lado a lado
+  - Población, área, densidad, idiomas
+  - Gráficos comparativos con barras proporcionales
+  - Perfecto para crear videos demo 🎥
+- **�📈 Gráficos Analíticos**:
   - Gráfico de barras por región
   - Gráfico circular de lenguajes más hablados
 - **🔍 Filtros Inteligentes**: Busca y filtra países por nombre, región, idioma
@@ -96,6 +100,26 @@ Cada página de país tiene SEO optimizado:
 ```
 
 Perfecto para compartir links en redes sociales.
+
+### 4. **Comparador de Países** (`useCountryComparison` + `ComparisonView`)
+
+La característica más "WOW" del dashboard:
+
+1. **En la tabla**: Marca dos países con los checkboxes de la izquierda
+2. **Comparación automática**: Se muestra directamente debajo de la tabla
+3. **Visualización lado a lado**:
+   - Banderas y nombres
+   - Región, población, área
+   - Densidad poblacional e idiomas
+4. **Gráfico comparativo**:
+   - Barras proporcionales para población y área
+   - Colores distintivos (azul vs rojo)
+   - Perfecto para grabar videos para LinkedIn 📹
+
+**Casos de uso:**
+- Comparar España vs Italia (tamaño similar, metros vs habitantes)
+- Comparar China vs India (ambas populosas, áreas diferentes)
+- Comparar Monaco vs Vaticano (microestados)
 
 ## 🚀 Inicio Rápido
 

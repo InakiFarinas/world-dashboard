@@ -18,6 +18,12 @@ const CountryPage = lazy(() =>
 	})),
 );
 
+const ComparisonPage = lazy(() =>
+	import("./pages/comparisonpage").then((module) => ({
+		default: module.ComparisonPage,
+	})),
+);
+
 export default function App() {
 	const [activeSection, setActiveSection] = useState("overview");
 	const location = useLocation();
@@ -102,6 +108,26 @@ export default function App() {
 								}
 							>
 								<CountryPage
+									countries={countries ?? []}
+									theme={theme}
+									onToggle={toggle}
+								/>
+							</Suspense>
+						</PageWrapper>
+					}
+				/>
+				<Route
+					path="/comparison"
+					element={
+						<PageWrapper>
+							<Suspense
+								fallback={
+									<div style={{ padding: 24, color: "var(--text-3)" }}>
+										Cargando comparador...
+									</div>
+								}
+							>
+								<ComparisonPage
 									countries={countries ?? []}
 									theme={theme}
 									onToggle={toggle}
