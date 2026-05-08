@@ -5,7 +5,6 @@ const SECTIONS = [
 	{ id: "overview", label: "📊 Resumen", icon: "📊" },
 	{ id: "table", label: "📋 Países", icon: "📋" },
 	{ id: "maps", label: "🗺️ Mapa", icon: "🗺️" },
-	{ id: "analytics", label: "📈 Análisis", icon: "📈" },
 ];
 
 export function Navigation({ active, onChange }) {

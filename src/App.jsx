@@ -10,7 +10,6 @@ import { Navigation } from "./components/navigation";
 import { OverviewSection } from "./components/sections/overview";
 import { TableSection } from "./components/sections/table";
 import { MapsSection } from "./components/sections/maps";
-import { AnalyticsSection } from "./components/sections/analytics";
 
 const CountryPage = lazy(() =>
 	import("./pages/countrypage").then((module) => ({
@@ -72,8 +71,6 @@ export default function App() {
 				return <TableSection countries={countries} />;
 			case "maps":
 				return <MapsSection countries={countries} />;
-			case "analytics":
-				return <AnalyticsSection countries={countries} />;
 			default:
 				return (
 					<OverviewSection
