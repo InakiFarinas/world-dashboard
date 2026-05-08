@@ -11,6 +11,11 @@ Una aplicación web interactiva que proporciona información global sobre paíse
   - Gráfico de barras por región
   - Gráfico circular de lenguajes más hablados
 - **🔍 Filtros Inteligentes**: Busca y filtra países por nombre, región, idioma
+- **⚡ Búsqueda Optimizada**: Debounce de 300ms para reducir re-renders (ver `useDebounce`)
+- **🔗 URL State**: Los filtros se guardan en query params (`?q=argentina&region=Americas`) - puedes compartir búsquedas
+- **🌐 Meta Tags Dinámicos**: Cada página de país tiene título y descripción únicos (SEO-friendly)
+  - Ejemplo: "Argentina — World Stats Dashboard"
+  - Funciona perfectamente para compartir en redes sociales
 - **🌓 Tema Personalizable**: Modo claro y oscuro
 - **📱 Diseño Responsivo**: Optimizado para desktop, tablet y móvil
 - **⚡ Rendimiento**: Carga rápida con Vite y optimización de componentes
@@ -46,10 +51,51 @@ src/
 │   ├── languageNames.js     # Mapeo de idiomas
 │   ├── maputils.js          # Utilidades para el mapa
 │   ├── styleConstants.js    # Constantes de estilos
-│   └── themeUtils.js        # Utilidades de tema
+│   ├── themeUtils.js        # Utilidades de tema
+│   └── useDebounce.js       # Hook para debounce (optimización de búsqueda)
 ├── App.jsx            # Componente raíz
 └── main.jsx          # Punto de entrada
 ```
+
+## 🎯 Patrones Técnicos
+
+### 1. **Debounce en Búsqueda** (`useDebounce`)
+
+Reduce renders innecesarios durante búsqueda de texto:
+
+```javascript
+const debouncedQuery = useDebounce(query, 300);
+```
+
+- Espera 300ms después del último cambio antes de filtrar
+- Mejora significativa en performance con grandes datasets
+
+### 2. **URL State Management** (`useCountryFilter`)
+
+Los filtros viven en query params para compartir búsquedas:
+
+- `?q=argentina` - búsqueda
+- `?region=Americas` - región
+- `?sort=population&dir=desc` - ordenamiento
+- `?page=2` - paginación
+- Ejemplo: `/table?q=spain&region=Europe&sort=population&dir=desc`
+
+### 3. **Meta Tags Dinámicos** (`react-helmet-async`)
+
+Cada página de país tiene SEO optimizado:
+
+```javascript
+<Helmet>
+	<title>{country.name.common} — World Stats Dashboard</title>
+	<meta name="description" content={`Learn about ${country.name.common}...`} />
+	<meta
+		property="og:title"
+		content={`${country.name.common} — World Stats Dashboard`}
+	/>
+</Helmet>
+```
+
+Perfecto para compartir links en redes sociales.
 
 ## 🚀 Inicio Rápido
 
@@ -93,6 +139,7 @@ npm run preview
 ## 🎨 Personalización
 
 El proyecto incluye:
+
 - Constantes de estilo en `styleConstants.js`
 - Tema personalizable (claro/oscuro) con `useTheme.js`
 - Colores y estilos CSS modulares
@@ -104,6 +151,7 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 ## 👨‍💻 Autor
 
 **Iñaki Fariñas**
+
 - GitHub: [@InakiFarinas](https://github.com/InakiFarinas)
 - Email: inakifarinas04@gmail.com
 
