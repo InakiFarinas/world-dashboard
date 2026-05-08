@@ -48,7 +48,16 @@ function LanguageTooltip({ active, payload }) {
 			{isOtherGroup && Array.isArray(entry.languages) ? (
 				<div style={{ fontSize: 11, color: "var(--text-3)", lineHeight: 1.4 }}>
 					<div style={{ fontWeight: 600, marginBottom: 4 }}>Incluye:</div>
-					<div>{entry.languages.join(", ")}</div>
+					<div>{entry.languages.slice(0, 6).join(", ")}...</div>
+					<div
+						style={{
+							marginTop: 4,
+							color: "var(--text-3)",
+							fontStyle: "italic",
+						}}
+					>
+						y {entry.languages.length - 6} idiomas más
+					</div>
 				</div>
 			) : null}
 		</div>
