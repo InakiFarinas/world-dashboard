@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Suspense, lazy } from "react";
 
 const CountryTable = lazy(() =>
-	import("../CountryTable").then((module) => ({
+	import("../countrytable").then((module) => ({
 		default: module.CountryTable,
 	})),
 );

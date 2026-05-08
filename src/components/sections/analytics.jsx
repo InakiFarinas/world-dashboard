@@ -3,12 +3,12 @@ import { Suspense, lazy } from "react";
 import { SPACING } from "../../utils/styleConstants";
 
 const RegionBarChart = lazy(() =>
-	import("../charts/RegionBarChart").then((module) => ({
+	import("../charts/regionbarchart").then((module) => ({
 		default: module.RegionBarChart,
 	})),
 );
 const LanguagePieChart = lazy(() =>
-	import("../charts/LanguagePieChart").then((module) => ({
+	import("../charts/languagepiechart").then((module) => ({
 		default: module.LanguagePieChart,
 	})),
 );

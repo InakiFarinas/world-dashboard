@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Suspense, lazy } from "react";
 
 const WorldMap = lazy(() =>
-	import("../WorldMap").then((module) => ({
+	import("../worldmap").then((module) => ({
 		default: module.WorldMap,
 	})),
 );

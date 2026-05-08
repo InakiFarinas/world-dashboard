@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { StatCard, statContainerVariants } from "../StatCard";
+import { StatCard, statContainerVariants } from "../statcard";
 import { SPACING } from "../../utils/styleConstants";
 
 export function OverviewSection({ stats, countries, loading }) {
