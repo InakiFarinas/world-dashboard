@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Suspense, lazy } from "react";
 
+const MotionDiv = motion.div;
+
 const CountryTable = lazy(() =>
 	import("../countrytable").then((module) => ({
 		default: module.CountryTable,
@@ -9,7 +11,7 @@ const CountryTable = lazy(() =>
 
 export function TableSection({ countries }) {
 	return (
-		<motion.div
+		<MotionDiv
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
@@ -20,6 +22,6 @@ export function TableSection({ countries }) {
 			>
 				<CountryTable countries={countries} />
 			</Suspense>
-		</motion.div>
+		</MotionDiv>
 	);
 }

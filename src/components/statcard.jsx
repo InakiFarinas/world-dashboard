@@ -1,5 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
 import { motion } from "framer-motion";
 import { BORDER_RADIUS, SPACING, FONT_SIZE } from "../utils/styleConstants";
+
+const MotionDiv = motion.div;
 
 export const statContainerVariants = {
 	hidden: {},
@@ -17,7 +20,7 @@ const cardVariants = {
 
 export function StatCard({ label, value, sub, loading, accent }) {
 	return (
-		<motion.div
+		<MotionDiv
 			variants={cardVariants}
 			whileHover={{ y: -2 }}
 			style={{
@@ -84,6 +87,6 @@ export function StatCard({ label, value, sub, loading, accent }) {
 			<p style={{ fontSize: 10, color: "var(--text-3)", marginTop: 4 }}>
 				{sub}
 			</p>
-		</motion.div>
+		</MotionDiv>
 	);
 }

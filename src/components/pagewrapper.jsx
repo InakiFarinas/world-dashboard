@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+const MotionDiv = motion.div;
+
 const variants = {
 	hidden: { opacity: 0, y: 12 },
 	visible: { opacity: 1, y: 0 },
@@ -8,7 +10,7 @@ const variants = {
 
 export function PageWrapper({ children }) {
 	return (
-		<motion.div
+		<MotionDiv
 			variants={variants}
 			initial="hidden"
 			animate="visible"
@@ -16,6 +18,6 @@ export function PageWrapper({ children }) {
 			transition={{ duration: 0.22, ease: "easeOut" }}
 		>
 			{children}
-		</motion.div>
+		</MotionDiv>
 	);
 }

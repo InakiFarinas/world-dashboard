@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { SPACING, FONT_SIZE, BORDER_RADIUS } from "../utils/styleConstants";
 
 // Helper para obtener color según el índice
@@ -14,7 +15,7 @@ export const hasLanguages = (country) => {
 };
 
 // Componente reutilizable para info del país
-export function CountryHeader({ country, color }) {
+export function CountryHeader({ country }) {
 	return (
 		<div
 			style={{

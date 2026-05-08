@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Suspense, lazy } from "react";
 
+const MotionDiv = motion.div;
+
 const WorldMap = lazy(() =>
 	import("../worldmap").then((module) => ({
 		default: module.WorldMap,
@@ -9,7 +11,7 @@ const WorldMap = lazy(() =>
 
 export function MapsSection({ countries }) {
 	return (
-		<motion.div
+		<MotionDiv
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
@@ -20,6 +22,6 @@ export function MapsSection({ countries }) {
 			>
 				<WorldMap countries={countries} />
 			</Suspense>
-		</motion.div>
+		</MotionDiv>
 	);
 }

@@ -10,6 +10,7 @@ import { Navigation } from "./components/navigation";
 import { OverviewSection } from "./components/sections/overview";
 import { TableSection } from "./components/sections/table";
 import { MapsSection } from "./components/sections/maps";
+import { ComparisonPage } from "./pages/comparisonpage";
 
 const CountryPage = lazy(() =>
 	import("./pages/countrypage").then((module) => ({
@@ -17,17 +18,11 @@ const CountryPage = lazy(() =>
 	})),
 );
 
-const ComparisonPage = lazy(() =>
-	import("./pages/comparisonpage").then((module) => ({
-		default: module.ComparisonPage,
-	})),
-);
-
 export default function App() {
 	const [activeSection, setActiveSection] = useState("overview");
 	const location = useLocation();
 	const { theme, toggle } = useTheme();
-	const { data: countries, isLoading, error } = useCountries();
+	const { data: countries, isLoading } = useCountries();
 
 	const stats = countries
 		? {
@@ -124,11 +119,7 @@ export default function App() {
 									</div>
 								}
 							>
-								<ComparisonPage
-									countries={countries ?? []}
-									theme={theme}
-									onToggle={toggle}
-								/>
+									<ComparisonPage theme={theme} onToggle={toggle} />
 							</Suspense>
 						</PageWrapper>
 					}

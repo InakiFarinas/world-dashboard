@@ -16,6 +16,8 @@ const LanguagePieChart = lazy(() =>
 	})),
 );
 
+const MotionDiv = motion.div;
+
 export function OverviewSection({ stats, countries, loading }) {
 	const countryList = countries ?? [];
 	const totalArea = countryList.reduce(
@@ -43,13 +45,13 @@ export function OverviewSection({ stats, countries, loading }) {
 	}, null);
 
 	return (
-		<motion.div
+		<MotionDiv
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.2 }}
 		>
-			<motion.div
+			<MotionDiv
 				variants={statContainerVariants}
 				initial="hidden"
 				animate="visible"
@@ -103,47 +105,64 @@ export function OverviewSection({ stats, countries, loading }) {
 					sub={largestCountry?.name.common}
 					loading={loading}
 				/>
-			</motion.div>
+			</MotionDiv>
 
-			<motion.div
+			<MotionDiv
 				initial={{ opacity: 0, y: 12 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.15, duration: 0.3 }}
 				className="overview-panel"
 			>
 				<h3 className="overview-panel-title">Información general</h3>
-				<div className="overview-info-grid">
-					<div>
-						<p className="overview-metric-label">Regiones</p>
-						<p className="overview-metric-value">{stats.regions || "—"}</p>
-					</div>
-					<div>
-						<p className="overview-metric-label">Idiomas únicos</p>
-						<p className="overview-metric-value">{stats.languages || "—"}</p>
-					</div>
-					<div>
-						<p className="overview-metric-label">Población media</p>
-						<p className="overview-metric-value">
-							{!loading && averagePopulation ? fmt(Math.round(averagePopulation)) : "—"}
-						</p>
-					</div>
-					<div>
-						<p className="overview-metric-label">Área media</p>
-						<p className="overview-metric-value">
-							{!loading && averageArea ? `${fmt(Math.round(averageArea))} km²` : "—"}
-						</p>
-					</div>
-				</div>
-			</motion.div>
+				<MotionDiv
+					variants={statContainerVariants}
+					initial="hidden"
+					animate="visible"
+					className="overview-stats-grid"
+				>
+					<StatCard
+						label="Regiones"
+						value={stats.regions || "—"}
+						accent="📍"
+						sub="continentes"
+						loading={loading}
+					/>
+					<StatCard
+						label="Idiomas únicos"
+						value={stats.languages || "—"}
+						accent="🗣️"
+						sub="en todo el mundo"
+						loading={loading}
+					/>
+					<StatCard
+						label="Población media"
+						value={
+							!loading && averagePopulation ? fmt(Math.round(averagePopulation)) : "—"
+						}
+						accent="👥"
+						sub="por país"
+						loading={loading}
+					/>
+					<StatCard
+						label="Área media"
+						value={
+							!loading && averageArea ? `${fmt(Math.round(averageArea))} km²` : "—"
+						}
+						accent="🗺️"
+						sub="por país"
+						loading={loading}
+					/>
+				</MotionDiv>
+			</MotionDiv>
 
-			<motion.div
+			<MotionDiv
 				initial={{ opacity: 0, y: 12 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.2, duration: 0.3 }}
 				className="overview-panel"
 				style={{ marginTop: SPACING.LG }}
 			>
-				<h3 className="overview-panel-title">Análisis</h3>
+				<h3 className="overview-panel-title">Distribución global</h3>
 				<div
 					style={{
 						display: "grid",
@@ -162,7 +181,7 @@ export function OverviewSection({ stats, countries, loading }) {
 						</Suspense>
 					</div>
 				</div>
-			</motion.div>
-		</motion.div>
+			</MotionDiv>
+		</MotionDiv>
 	);
 }

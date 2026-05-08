@@ -23,12 +23,15 @@ export function getTopLanguages(countries, top = 6) {
 		.sort((a, b) => b.count - a.count);
 
 	const topLanguages = sorted.slice(0, top);
-	const othersCount = sorted
-		.slice(top)
-		.reduce((sum, item) => sum + item.count, 0);
+	const others = sorted.slice(top);
+	const othersCount = others.reduce((sum, item) => sum + item.count, 0);
 
 	if (othersCount > 0) {
-		topLanguages.push({ name: "Otros", count: othersCount });
+		topLanguages.push({
+			name: "Otros",
+			count: othersCount,
+			languages: others.map((item) => item.name),
+		});
 	}
 
 	return topLanguages;

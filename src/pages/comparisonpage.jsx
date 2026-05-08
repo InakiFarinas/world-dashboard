@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { ComparisonView } from "../components/comparisonview";
@@ -7,14 +6,10 @@ import { PageWrapper } from "../components/pagewrapper";
 import { Layout } from "../components/layout";
 import { SPACING } from "../utils/styleConstants";
 
-export function ComparisonPage({ countries }) {
-	const navigate = useNavigate();
-	const [selectedCountries, setSelectedCountries] = useState([]);
+const MotionDiv = motion.div;
 
-	const handleCompare = (countries) => {
-		setSelectedCountries(countries);
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	};
+export function ComparisonPage() {
+	const [selectedCountries, setSelectedCountries] = useState([]);
 
 	const handleClearComparison = () => {
 		setSelectedCountries([]);
@@ -39,7 +34,7 @@ export function ComparisonPage({ countries }) {
 			</Helmet>
 
 			<PageWrapper>
-				<motion.div
+				<MotionDiv
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 				>
@@ -57,7 +52,7 @@ export function ComparisonPage({ countries }) {
 							Selecciona dos países desde la tabla para verlos lado a lado
 						</p>
 					</div>
-				</motion.div>
+				</MotionDiv>
 
 				<AnimatePresence>
 					{selectedCountries.length === 2 && (
@@ -70,7 +65,7 @@ export function ComparisonPage({ countries }) {
 				</AnimatePresence>
 
 				{selectedCountries.length === 0 && (
-					<motion.div
+					<MotionDiv
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -83,7 +78,7 @@ export function ComparisonPage({ countries }) {
 						<p style={{ fontSize: 16 }}>
 							← Selecciona dos países de la tabla para comenzar
 						</p>
-					</motion.div>
+					</MotionDiv>
 				)}
 			</PageWrapper>
 		</Layout>

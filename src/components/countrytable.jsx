@@ -14,6 +14,8 @@ import {
 	TEXT_STYLES,
 } from "../utils/styleConstants";
 
+const MotionDiv = motion.div;
+
 const rowVariants = {
 	hidden: { opacity: 0, x: -8 },
 	visible: (i) => ({
@@ -88,7 +90,7 @@ export function CountryTable({ countries, onCompare }) {
 			<Panel style={{ overflow: "hidden" }}>
 				{/* Botón de comparación */}
 				{canCompare && (
-					<motion.div
+					<MotionDiv
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
@@ -121,7 +123,7 @@ export function CountryTable({ countries, onCompare }) {
 							📊 Comparar
 						</PrimaryButton>
 						<SecondaryButton onClick={clearSelection}>✕</SecondaryButton>
-					</motion.div>
+					</MotionDiv>
 				)}
 
 				{/* Header */}
@@ -174,7 +176,7 @@ export function CountryTable({ countries, onCompare }) {
 							};
 
 							return (
-								<motion.div
+								<MotionDiv
 									key={c.cca3}
 									custom={i}
 									variants={rowVariants}
@@ -304,7 +306,7 @@ export function CountryTable({ countries, onCompare }) {
 									>
 										{c.area ? c.area.toLocaleString() : "—"}
 									</span>
-								</motion.div>
+								</MotionDiv>
 							);
 						})}
 					</AnimatePresence>

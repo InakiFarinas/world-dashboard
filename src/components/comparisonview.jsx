@@ -20,6 +20,8 @@ import {
 	LanguagesSection,
 } from "./comparisonhelpers";
 
+const MotionDiv = motion.div;
+
 export function ComparisonView({ country1, country2, onClear }) {
 	const comparisonData = [
 		{
@@ -38,7 +40,7 @@ export function ComparisonView({ country1, country2, onClear }) {
 	const color2 = getCountryColor(1);
 
 	return (
-		<motion.div
+		<MotionDiv
 			initial={{ opacity: 0, y: 10 }}
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -10 }}
@@ -140,7 +142,7 @@ export function ComparisonView({ country1, country2, onClear }) {
 					</BarChart>
 				</ResponsiveContainer>
 			</Panel>
-		</motion.div>
+		</MotionDiv>
 	);
 }
 

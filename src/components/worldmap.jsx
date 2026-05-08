@@ -22,7 +22,6 @@ import {
 	FONT_SIZE,
 	SHADOWS,
 } from "../utils/styleConstants";
-import { getThemeVars } from "../utils/themeUtils";
 
 export function WorldMap({ countries }) {
 	const [metric, setMetric] = useState("population");

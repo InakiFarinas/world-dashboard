@@ -24,7 +24,9 @@ const COLORS = {
 };
 
 export function RegionBarChart({ countries }) {
-	const data = getPopByRegion(countries);
+	const data = getPopByRegion(countries).filter(
+		(entry) => entry.region !== "Antarctic" && entry.population > 0,
+	);
 
 	const themeVars = getThemeVars();
 	const tooltipStyle = getChartTooltipStyle(themeVars);
