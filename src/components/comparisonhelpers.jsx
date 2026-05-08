@@ -1,4 +1,4 @@
-import { SPACING, FONT_SIZE, BORDER_RADIUS } from "../../utils/styleConstants";
+import { SPACING, FONT_SIZE, BORDER_RADIUS } from "../utils/styleConstants";
 
 // Helper para obtener color según el índice
 export const getCountryColor = (index) => (index === 0 ? "#3B82F6" : "#EF4444");
