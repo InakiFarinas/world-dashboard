@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { Layout } from "../components/Layout";
+import { Layout } from "../components/layout";
 
 export function CountryPage({ countries, theme, onToggle }) {
 	const { cca3 } = useParams();
