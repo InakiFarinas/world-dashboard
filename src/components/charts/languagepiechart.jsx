@@ -6,7 +6,7 @@ import {
 	ResponsiveContainer,
 	Legend,
 } from "recharts";
-import { getTopLanguages } from "../../utils/chartUtils";
+import { getTopLanguages } from "../../utils/chartutils";
 import { getLanguageNameES } from "../../utils/languageNames";
 import Panel from "../ui/panel";
 import { FONT_SIZE } from "../../utils/styleConstants";

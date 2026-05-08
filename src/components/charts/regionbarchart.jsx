@@ -8,7 +8,7 @@ import {
 	ResponsiveContainer,
 	Cell,
 } from "recharts";
-import { getPopByRegion } from "../../utils/chartUtils";
+import { getPopByRegion } from "../../utils/chartutils";
 import Panel from "../ui/panel";
 import { formatCompact } from "../../utils/format";
 import { FONT_SIZE } from "../../utils/styleConstants";
