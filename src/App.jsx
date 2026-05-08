@@ -1,19 +1,19 @@
 import { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useCountries } from "./hooks/useCountries";
-import { Layout } from "./components/Layout";
+import { Layout } from "./components/layout";
 import { useTheme } from "./hooks/useTheme";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { PageWrapper } from "./components/PageWrapper";
-import { Navigation } from "./components/Navigation";
+import { PageWrapper } from "./components/pagewrapper";
+import { Navigation } from "./components/navigation";
 import { OverviewSection } from "./components/sections/overview";
 import { TableSection } from "./components/sections/table";
 import { MapsSection } from "./components/sections/maps";
 import { AnalyticsSection } from "./components/sections/analytics";
 
 const CountryPage = lazy(() =>
-	import("./pages/CountryPage").then((module) => ({
+	import("./pages/countrypage").then((module) => ({
 		default: module.CountryPage,
 	})),
 );
