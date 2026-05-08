@@ -285,10 +285,10 @@ export function CountryTable({ countries, onCompare }) {
 									{/* Checkbox */}
 									<input
 										type="checkbox"
-										checked={isSelected(c.cca3)}
+										checked={isSelected(c)}
 										onChange={(e) => {
 											e.stopPropagation();
-											toggleCountry(c.cca3);
+											toggleCountry(c);
 										}}
 										style={{
 											width: 18,
@@ -408,8 +408,8 @@ export function CountryTable({ countries, onCompare }) {
 						<Pagination
 							page={page}
 							totalPages={totalPages}
-							onPrev={() => setPage((p) => p - 1)}
-							onNext={() => setPage((p) => p + 1)}
+							onPrev={() => setPage(page - 1)}
+							onNext={() => setPage(page + 1)}
 						/>
 					</div>
 				</div>
